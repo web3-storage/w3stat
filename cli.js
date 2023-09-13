@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import sade from 'sade'
+import fs from 'node:fs'
 import process from 'node:process'
 import * as readline from 'node:readline/promises'
 import { Parallel } from 'parallel-transform-web'
@@ -12,12 +13,12 @@ import { findIndexesByCid, base58btcMultihash } from './dynamo.js'
 
 const concurrency = 50
 
-// const pkg = JSON.parse(fs.readFileSync(new URL('./package.json', import.meta.url), { encoding: 'utf-8' }))
+const pkg = JSON.parse(fs.readFileSync(new URL('./package.json', import.meta.url), { encoding: 'utf-8' }))
 
 const cli = sade('w3stat')
 
 cli
-  .version('1')
+  .version(pkg.version)
   .example('dudewhere [cid]')
 
 cli.command('cid [cid]', 'find out what we know about that cid', { default: true })
@@ -34,9 +35,11 @@ cli.command('cid [cid]', 'find out what we know about that cid', { default: true
     const dynamo = new DynamoDBClient({})
     inputStream(cidStr, opts._)
       .pipeThrough(new Parallel(concurrency, async cidStr => {
-        const dude = await dudewhere(cidStr, s3)
-        const indexes = await findIndexesByCid(cidStr, dynamo, opts.table)
-        const deny = await checkDenyList(cidStr)
+        const [dude, indexes, deny] = await Promise.all([
+          dudewhere(cidStr, s3),
+          findIndexesByCid(cidStr, dynamo, opts.table),
+          checkDenyList(cidStr)
+        ])
         return { cid: cidStr, dude, indexes, deny }
       }))
       .pipeTo(new WritableStream({

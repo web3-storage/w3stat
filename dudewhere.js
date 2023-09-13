@@ -19,5 +19,11 @@ export async function dudewhere (cidStr, client, bucket = 'dudewhere-prod-0', pr
   if (items.length === 0 && cid.version === 0 && !prefixOverride) {
     return dudewhere(cidStr, client, bucket, cid.toString())
   }
-  return items.map(i => i.Key)
+  const keys = []
+  for (const k of items) {
+    if (k.Key !== undefined) {
+      keys.push(k.Key)
+    }
+  }
+  return keys
 }
