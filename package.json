@@ -1,0 +1,29 @@
+{
+  "name": "w3stat",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "bin": "cli.js",
+  "scripts": {
+    "test": "standard && tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.410.0",
+    "@aws-sdk/client-s3": "^3.409.0",
+    "@aws-sdk/util-dynamodb": "^3.410.0",
+    "multiformats": "^12.1.1",
+    "parallel-transform-web": "^1.0.0",
+    "sade": "^1.8.1",
+    "undici": "^5.24.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.1",
+    "@types/node": "^18.17.15",
+    "standard": "^17.1.0",
+    "typescript": "^5.2.2"
+  }
+}
