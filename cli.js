@@ -3,17 +3,24 @@
 import sade from 'sade'
 import fs from 'node:fs'
 import process from 'node:process'
+import { fileURLToPath } from 'node:url'
+import path from 'node:path'
 import * as readline from 'node:readline/promises'
 import { Parallel } from 'parallel-transform-web'
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb'
 import { S3Client } from '@aws-sdk/client-s3'
+import dotenv from 'dotenv'
 import { checkDenyList } from './deny.js'
 import { dudewhere } from './dudewhere.js'
 import { findIndexesByCid, base58btcMultihash } from './dynamo.js'
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url).toString())
+
+dotenv.config({ path: path.join(__dirname, '/.env') })
+
 const concurrency = 50
 
-const pkg = JSON.parse(fs.readFileSync(new URL('./package.json', import.meta.url), { encoding: 'utf-8' }))
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'))
 
 const cli = sade('w3stat')
 

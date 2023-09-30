@@ -23,3 +23,5 @@ You need the following set in the environment
 - [AWS credentials set up](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/setting-credentials-node.html)
 - `R2_ACCESS_KEY_ID` - Cloudflare s3 api key id
 - `R2_SECRET_ACCESS_KEY` - Cloudflare secret key
+
+Add a `.env` file to the project root with these vars to enable.
