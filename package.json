@@ -15,6 +15,7 @@
     "@aws-sdk/client-dynamodb": "^3.410.0",
     "@aws-sdk/client-s3": "^3.409.0",
     "@aws-sdk/util-dynamodb": "^3.410.0",
+    "dotenv": "^16.3.1",
     "multiformats": "^12.1.1",
     "parallel-transform-web": "^1.0.0",
     "sade": "^1.8.1",
