@@ -3,7 +3,7 @@
 Admin tool to get info about a cid
 
 ```shell
-❯ ./cli.js bafybeigfpa7cugx7acsz4omli2yezj6us4xgdrgmducsjuluva7oifemtq
+$ w3stat cid bafybeigfpa7cugx7acsz4omli2yezj6us4xgdrgmducsjuluva7oifemtq
 bafybeigfpa7cugx7acsz4omli2yezj6us4xgdrgmducsjuluva7oifemtq
 🟢 ok. cid not on denylist
 🚘 bagbaieraxlxzbs4wpoiba7zzzgo4a3zjzx5asfdrex5jholcwkwmwiu77lwa
@@ -14,7 +14,27 @@ bafybeigfpa7cugx7acsz4omli2yezj6us4xgdrgmducsjuluva7oifemtq
 
 - Clone the repo
 - Install the deps `npm i`
-- Find what we know about a CID `./cli.js [your cid here]`
+- Copy `.env.tpl` to `.env`
+- Link it `npm link -g` to make `w3cli` available on your path
+
+## Commands
+
+### `w3stat cid`
+
+Prints everything the tool can find about a given cid. It is the summary of the more specific commands listed below
+
+### `w3stat denylist`
+
+Is the CID on the denylist?
+
+### `w3stat dynamo`
+
+What block indexes do we have for the multihash in the given cid?
+
+### `w3stat dudewhere`
+
+Do we have any CID -> CAR CID mappings in dudewhere?
+
 
 ## Environment
 
@@ -24,4 +44,4 @@ You need the following set in the environment
 - `R2_ACCESS_KEY_ID` - Cloudflare s3 api key id
 - `R2_SECRET_ACCESS_KEY` - Cloudflare secret key
 
-Add a `.env` file to the project root with these vars to enable.
+You can copy `.env.tpl` to `.env` and set the values there.
