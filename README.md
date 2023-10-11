@@ -15,7 +15,7 @@ bafybeigfpa7cugx7acsz4omli2yezj6us4xgdrgmducsjuluva7oifemtq
 - Clone the repo
 - Install the deps `npm i`
 - Copy `.env.tpl` to `.env`
-- Link it `npm link -g` to make `w3cli` available on your path
+- Link it `npm link` to make `w3cli` available on your path
 
 ## Commands
 
