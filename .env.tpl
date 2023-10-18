@@ -6,6 +6,6 @@ R2_SECRET_ACCESS_KEY="?"
 
 # Standard AWS Credentials if not set elsewhere
 # see: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html
-#AWS_ACCESS_KEY_ID="?"
-#AWS_SECRET_ACCESS_KEY="?"
-#AWS_DEFAULT_REGION="us-west-2"
+AWS_ACCESS_KEY_ID="?"
+AWS_SECRET_ACCESS_KEY="?"
+AWS_REGION="us-west-2"
